@@ -1,0 +1,27 @@
+<!-- List of Organization and Button to Add new Organization -->
+
+<div class="col-lg-12" >
+    <button type="button" class="btn btn-success" (click)="addOrganization()">
+        Add Organization
+    </button>
+    <br>
+    <div *ngIf="organizationStatus" class="mt-10">
+        <ng-container *ngFor="let oneOrganization of organizations;" >
+            <div class="card cardList">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img [src] = "oneOrganization.organization_logo_url" style="width: 100px; margin: 5%;">
+                    </div>
+                    <div class="col-lg-6 py-4">
+                        <p class="text-left"><b>{{oneOrganization.organization_name}}</b></p>
+                        <button type="button" class="btn btn-primary" (click)="organizationDetail(oneOrganization)">
+                            View Organization
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+       

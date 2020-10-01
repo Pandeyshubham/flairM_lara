@@ -1,0 +1,148 @@
+<div class="col-lg-12">
+    <!-- Container for Organization Details -->
+
+    <ng-container *ngIf="organizationData">
+        <h4 class ="text-primary mb-4">Organization Details</h4>
+
+        <div class="card cardList">
+            <div class="row p-2">
+                <div class="col-lg-4"><img [src] = "orgDetails.organization_logo_url" style="width: 100px;">
+                </div>
+                <div class="col-lg-8 text-left">
+                    <p><b>Name:</b> {{orgDetails.organization_name}}</p>
+                    <p><b>Email:</b> {{orgDetails.organization_email}}</p>
+                    <p><b>Status:</b> {{orgDetails.organization_status}}</p>
+
+                    <button type="button" class="btn btn-warning ml-auto" (click)="showContactForm()">
+                        Add Contact
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- If user wants to add Contacts-->
+        <div *ngIf="contactForm">
+            <h4 class ="text-danger">Contact Add</h4>
+            <div class="card cardList">
+                <div class="row px-3">
+                    <form class="p-2" #contactForm = "ngForm" (ngSubmit) = "addContact(contactForm.value)" >
+
+                        <div class="row">
+                        
+                            <div class="col-lg-4">
+                                <b>Name*: </b>
+                            </div>
+                            <div class="col-lg-8">
+                                <input type = "text" name = "contact_name" placeholder = "Contact Name" ngModel>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <b>Profile URL*: </b>
+                            </div>
+                            <div class="col-lg-8">
+                                <input type = "text" name = "contact_image_url" placeholder = "Profile Image Path" ngModel>
+                            </div>
+  
+                            <div class="col-lg-4">
+                                <b>Email*: </b>
+                            </div>
+                            <div class="col-lg-8">
+                                <input type = "text" name = "contact_email" placeholder = "Contact Email" ngModel>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <b>Mobile No*: </b>
+                            </div>
+                            <div class="col-lg-8">
+                                <input type = "text" name = "contact_number" placeholder = "Contact Number" ngModel>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <b>Address*: </b>
+                            </div>
+                            <div class="col-lg-8">
+                                <input type = "text" name = "contact_address" placeholder = "Contact Address" ngModel>
+                            </div>
+                            <input type = "hidden" name = "organization_id" [(ngModel)]="orgDetails.organization_id" ngModel>
+                            <div class="col-lg-4">
+                            </div>
+                            <div class="col-lg-8">
+                                <input class="btn btn-success" type = "submit" value = "Submit">
+                            </div>
+                        </div>
+
+                    </form> 
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Keep Showing the List of Contacts-->
+        <h4 class ="text-warning py-2">Contacts</h4>
+        <ng-container *ngFor="let oneContact of contactList;" >
+            <div class="card cardList">
+                
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img [src] = "oneContact.contact_image_url" style="width: 100px; margin: 5%;">
+                    </div>
+                    <div class="col-lg-6 py-4">
+                        <p class="text-left"><b>{{oneContact.contact_name}}</b></p>
+                        <button type="button" class="btn btn-primary" (click)="contactDetails(oneContact)">
+                            View Contact
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </ng-container>
+
+
+    </ng-container>
+
+
+    <!-- Container to add organization Enables on Button Click and Status become True-->
+    <ng-container *ngIf="organizationAddData">
+        <h4 class ="text-primary">Organization Add</h4>
+        <div class="card cardList">
+            <div class="row px-3">
+                <form class="p-2" #orgAddForm = "ngForm" (ngSubmit) = "onClickSubmit(orgAddForm.value)" >
+                    <div class="row">
+                        
+                        <div class="col-lg-4">
+                            <b>Name*: </b>
+                        </div>
+                        <div class="col-lg-8">
+                            <input type = "text" name = "organization_name" placeholder = "Organization Name" ngModel>
+                        </div>
+        
+                        <div class="col-lg-4">
+                            <b>Logo URL*: </b>
+                        </div>
+                        <div class="col-lg-8">
+                            <input type = "text" name = "organization_logo_url" placeholder = "Logo Path" ngModel>
+                        </div>
+                
+                        <div class="col-lg-4">
+                            <b>Email*: </b>
+                        </div>
+                        <div class="col-lg-8">
+                            <input type = "text" name = "organization_email" placeholder = "Organization Email" ngModel>
+                        </div>
+                  
+                        <div class="col-lg-4">
+                        </div>
+                        <div class="col-lg-8">
+                            <input class="btn btn-success" type = "submit" value = "Submit">
+                        </div>
+                    </div>
+                    
+                   
+                </form> 
+            </div>
+        </div>
+    </ng-container>
+    
+</div>
+        
+

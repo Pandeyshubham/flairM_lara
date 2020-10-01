@@ -1,0 +1,22 @@
+<!-- Coloum for Contact Details-->
+<div class="col-lg-12">
+   
+    <ng-container *ngIf="contactDetailsStatus" >
+        <h4 class ="text-primary mb-4">Contact Details</h4>
+        <div class="card cardList">
+        
+            <div><img [src] = "contactDetails.contact_image_url" style="width: 80%;margin: 10%;">
+                
+            </div>
+            <div class="col-lg-8 text-left">
+                <p><b>Name:</b> {{contactDetails.contact_name}}</p>
+                <p><b>Email:</b> {{contactDetails.contact_email}}</p>
+                <p><b>Contact No.:</b> {{contactDetails.contact_number}}</p>
+                <p><b>Address:</b> {{contactDetails.contact_address}}</p>
+                <p><b>Status:</b> {{contactDetails.contact_status}}</p>
+            </div>
+        </div>
+    </ng-container>
+
+</div>
+       
